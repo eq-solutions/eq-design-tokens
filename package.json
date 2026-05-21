@@ -7,11 +7,11 @@
   "description": "Canonical EQ Solutions design tokens — colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing).",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Milmlow/eq-design-tokens.git"
+    "url": "git+https://github.com/eq-solutions/eq-design-tokens.git"
   },
-  "homepage": "https://github.com/Milmlow/eq-design-tokens",
+  "homepage": "https://github.com/eq-solutions/eq-design-tokens",
   "bugs": {
-    "url": "https://github.com/Milmlow/eq-design-tokens/issues"
+    "url": "https://github.com/eq-solutions/eq-design-tokens/issues"
   },
   "keywords": [
     "eq-solutions",

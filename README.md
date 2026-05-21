@@ -9,9 +9,9 @@ If you're adding a new EQ surface or changing an existing one, import from here.
 This package is distributed via git URL, not a registry. Pin to a tag for reproducibility.
 
 ```sh
-pnpm add github:Milmlow/eq-design-tokens#v0.1.0
+pnpm add github:eq-solutions/eq-design-tokens#v0.1.0
 # or
-npm install github:Milmlow/eq-design-tokens#v0.1.0
+npm install github:eq-solutions/eq-design-tokens#v0.1.0
 ```
 
 Bumping versions = bump the tag and reinstall. The package contents are checked-in source (`tokens.css` + `tokens.ts`), so there's no build step — what's in the repo is what consumers get.
@@ -162,6 +162,6 @@ All changes route through Royce. There's no PR process beyond "open one and ping
 
 ## Related
 
-- [`eq-solutions/eq-shell`](https://github.com/Milmlow/eq-shell) — cross-app auth + navigation chrome.
-- [`eq-solutions/eq-solves-field`](https://github.com/Milmlow/eq-solves-field) — gold-standard Field app.
-- [`eq-solutions/eq-solves-service`](https://github.com/Milmlow/eq-solves-service) — Service app (first consumer of this package).
+- [`eq-solutions/eq-shell`](https://github.com/eq-solutions/eq-shell) — cross-app auth + navigation chrome.
+- [`eq-solutions/eq-field`](https://github.com/eq-solutions/eq-field) — gold-standard Field app.
+- [`Milmlow/eq-solves-service`](https://github.com/Milmlow/eq-solves-service) — EQ Solves Service (first consumer of this package; pending move into the eq-solutions org).
