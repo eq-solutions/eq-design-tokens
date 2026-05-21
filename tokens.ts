@@ -1,0 +1,136 @@
+/**
+ * @eq-solutions/tokens — programmatic access to EQ design tokens.
+ *
+ * Use this when you need token values inside TypeScript / JavaScript rather
+ * than CSS — e.g. inline styles for charts, canvas drawing, generated PDFs,
+ * email templates, or feeding a non-CSS rendering layer like Konva / Leaflet.
+ *
+ * The canonical source-of-truth is `tokens.css`. This file mirrors those
+ * values by hand — keep them in lockstep. (A future patch may auto-generate
+ * this from a single JSON via Style Dictionary; not in v0.1.)
+ */
+
+export const colours = {
+  brand: {
+    sky:   '#3DA8D8',
+    deep:  '#2986B4',
+    ice:   '#EAF5FB',
+    ink:   '#1A1A2E',
+    grey:  '#666666',
+    white: '#FFFFFF',
+  },
+  gray: {
+    50:  '#F9FAFB',
+    100: '#F3F4F6',
+    200: '#E5E7EB',
+    300: '#D1D5DB',
+    400: '#9CA3AF',
+    500: '#6B7280',
+    600: '#4B5563',
+  },
+  status: {
+    successBg:   '#F0FDF4',
+    successText: '#15803D',
+    warningBg:   '#FFFBEB',
+    warningText: '#B45309',
+    errorBg:     '#FEF2F2',
+    errorText:   '#B91C1C',
+  },
+} as const;
+
+export const typography = {
+  fontStack: `'Plus Jakarta Sans', 'Aptos Display', 'Aptos', Arial, sans-serif`,
+  scale: {
+    xs:   11,
+    sm:   12,
+    base: 14,
+    md:   15,
+    lg:   18,
+    xl:   22,
+    '2xl': 28,
+    '3xl': 36,
+    '4xl': 48,
+  },
+  weights: {
+    regular: 400,
+    medium:  500,
+    semi:    600,
+    bold:    700,
+    black:   800,
+  },
+  body: {
+    lineHeight: 1.5,
+    weight: 400,
+  },
+  tracking: {
+    tight:   '-0.01em',
+    tighter: '-0.02em',
+    label:   '0.06em',
+  },
+  label: {
+    size: 12,
+    weight: 600,
+  },
+} as const;
+
+export const spacing = {
+  1: 4,
+  2: 8,
+  3: 12,
+  4: 16,
+  5: 20,
+  6: 24,
+  8: 32,
+  10: 40,
+  12: 48,
+  16: 64,
+  contentMaxWidth: 1200,
+} as const;
+
+export const radii = {
+  chip:  4,
+  input: 6,
+  card:  8,
+  shell: 12,
+  pill:  9999,
+} as const;
+
+export const borders = {
+  width: 1,
+  color: colours.gray[200],
+  inputColor: colours.gray[300],
+} as const;
+
+export const shadows = {
+  sm: '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+  lg: '0 10px 40px rgba(0, 0, 0, 0.15)',
+} as const;
+
+export const motion = {
+  durationDefault: 150,
+  durationDrawer:  300,
+  durationSpinner: 700,
+  ease: 'cubic-bezier(0.4, 0, 0.2, 1)',
+} as const;
+
+export const focus = {
+  ring: '0 0 0 2px rgba(61, 168, 216, 0.40)',
+  offset: 2,
+} as const;
+
+/**
+ * Convenience aggregate. Prefer named imports (`import { colours } from
+ * '@eq-solutions/tokens'`) over destructuring this default.
+ */
+export const tokens = {
+  colours,
+  typography,
+  spacing,
+  radii,
+  borders,
+  shadows,
+  motion,
+  focus,
+} as const;
+
+export default tokens;

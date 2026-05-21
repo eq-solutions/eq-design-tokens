@@ -1,0 +1,47 @@
+{
+  "name": "@eq-solutions/tokens",
+  "version": "0.1.0",
+  "private": false,
+  "license": "UNLICENSED",
+  "author": "CDC Solutions Pty Ltd",
+  "description": "Canonical EQ Solutions design tokens — colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milmlow/eq-design-tokens.git"
+  },
+  "homepage": "https://github.com/Milmlow/eq-design-tokens",
+  "bugs": {
+    "url": "https://github.com/Milmlow/eq-design-tokens/issues"
+  },
+  "keywords": [
+    "eq-solutions",
+    "design-tokens",
+    "design-system",
+    "tailwind",
+    "tailwindcss-v4"
+  ],
+  "main": "tokens.ts",
+  "types": "tokens.ts",
+  "exports": {
+    ".": {
+      "types": "./tokens.ts",
+      "default": "./tokens.ts"
+    },
+    "./tokens.css": "./tokens.css",
+    "./tokens.ts": "./tokens.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "tokens.css",
+    "tokens.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
