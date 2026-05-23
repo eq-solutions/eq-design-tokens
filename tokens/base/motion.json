@@ -1,0 +1,13 @@
+{
+  "motion": {
+    "duration": {
+      "default": { "value": "150ms", "comment": "default transition - colour, border, opacity" },
+      "drawer":  { "value": "300ms", "comment": "sidebar drawer slide" },
+      "spinner": { "value": "700ms", "comment": "loading spinner full revolution" }
+    },
+    "ease": {
+      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "comment": "no bounce. Motion is colour / border swap, not translate, except for the sidebar drawer."
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "color": {
+    "brand": {
+      "sky":   { "value": "#3DA8D8", "comment": "primary: logo, headings, CTAs, icon fills" },
+      "deep":  { "value": "#2986B4", "comment": "hover for anything blue; secondary headings" },
+      "ice":   { "value": "#EAF5FB", "comment": "page / card tint; table header alt fill" },
+      "ink":   { "value": "#1A1A2E", "comment": "body text, dark sidebar - never pure black" },
+      "grey":  { "value": "#666666", "comment": "secondary text, labels, metadata" },
+      "white": { "value": "#FFFFFF", "comment": "text on blue/ink surfaces" }
+    },
+    "gray": {
+      "50":  { "value": "#F9FAFB" },
+      "100": { "value": "#F3F4F6" },
+      "200": { "value": "#E5E7EB", "comment": "default border on cards, inputs, table rows" },
+      "300": { "value": "#D1D5DB", "comment": "default input border" },
+      "400": { "value": "#9CA3AF" },
+      "500": { "value": "#6B7280" },
+      "600": { "value": "#4B5563" }
+    },
+    "status": {
+      "success": {
+        "bg":   { "value": "#F0FDF4" },
+        "text": { "value": "#15803D" }
+      },
+      "warning": {
+        "bg":   { "value": "#FFFBEB" },
+        "text": { "value": "#B45309" }
+      },
+      "error": {
+        "bg":   { "value": "#FEF2F2" },
+        "text": { "value": "#B91C1C" }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "border": {
+    "width":       { "value": "1px" },
+    "color":       { "value": "{color.gray.200.value}", "comment": "default border on cards, inputs, table rows" },
+    "inputColor":  { "value": "{color.gray.300.value}", "comment": "default input border" }
+  }
+}

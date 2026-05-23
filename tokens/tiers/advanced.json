@@ -1,0 +1,6 @@
+{
+  "_meta": {
+    "tier": "advanced",
+    "description": "Reserved. Currently inherits Standard. Add overrides here when a real visual distinction between Standard and Advanced is required - until then, Advanced is shape-identical to Standard so the build pipeline + Shell tier-attribute wiring stay validated for the eventual rollout."
+  }
+}

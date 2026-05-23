@@ -1,0 +1,9 @@
+{
+  "focus": {
+    "ring": {
+      "value": "0 0 0 2px rgba(61, 168, 216, 0.40)",
+      "comment": "required on every focusable input. Pair with outline-offset: 2px on focus-visible."
+    },
+    "offset": { "value": "2px" }
+  }
+}

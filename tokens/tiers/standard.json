@@ -1,0 +1,6 @@
+{
+  "_meta": {
+    "tier": "standard",
+    "description": "Base tier. Inherits all base tokens without override. This file exists to keep the tier scaffolding symmetric; do not add overrides here unless you genuinely want to fork Standard from the canonical base."
+  }
+}

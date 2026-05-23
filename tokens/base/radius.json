@@ -1,0 +1,9 @@
+{
+  "radius": {
+    "chip":  { "value": "4px",    "comment": "tags, small pill chips" },
+    "input": { "value": "6px",    "comment": "buttons, inputs" },
+    "card":  { "value": "8px",    "comment": "standard cards" },
+    "shell": { "value": "12px",   "comment": "large shell cards (Service)" },
+    "pill":  { "value": "9999px", "comment": "badges, avatars" }
+  }
+}

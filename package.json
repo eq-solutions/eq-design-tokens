@@ -1,10 +1,11 @@
 {
   "name": "@eq-solutions/tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "license": "UNLICENSED",
   "author": "CDC Solutions Pty Ltd",
-  "description": "Canonical EQ Solutions design tokens — colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing).",
+  "description": "Canonical EQ Solutions design tokens — colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing). Outputs CSS, TS, Tailwind preset, and Flutter Dart constants from one JSON source. Tiered (Standard / Advanced / Enterprise) via [data-tier] selectors.",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eq-solutions/eq-design-tokens.git"
@@ -18,7 +19,9 @@
     "design-tokens",
     "design-system",
     "tailwind",
-    "tailwindcss-v4"
+    "tailwindcss-v4",
+    "flutter",
+    "dart"
   ],
   "main": "tokens.ts",
   "types": "tokens.ts",
@@ -29,11 +32,19 @@
     },
     "./tokens.css": "./tokens.css",
     "./tokens.ts": "./tokens.ts",
+    "./tailwind.preset.cjs": "./tailwind.preset.cjs",
+    "./tailwind": "./tailwind.preset.cjs",
+    "./tokens.dart": "./tokens.dart",
+    "./dart": "./tokens.dart",
     "./package.json": "./package.json"
   },
   "files": [
+    "tokens/",
     "tokens.css",
     "tokens.ts",
+    "tailwind.preset.cjs",
+    "tokens.dart",
+    "build.mjs",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
@@ -41,7 +52,14 @@
   "sideEffects": [
     "*.css"
   ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepublishOnly": "node build.mjs"
+  },
   "publishConfig": {
     "access": "restricted"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

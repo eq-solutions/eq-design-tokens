@@ -1,0 +1,8 @@
+{
+  "tier": {
+    "accent": {
+      "value": "{color.brand.sky.value}",
+      "comment": "Tenant-customisable accent. Defaults to brand.sky. Enterprise tier overrides to a tenant-set value (or a deeper teal as fallback). Apps should reference tier.accent for highlights that are allowed to vary per tenant; reference color.brand.sky directly only for the canonical EQ identity (logo, primary CTA)."
+    }
+  }
+}

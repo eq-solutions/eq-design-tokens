@@ -1,0 +1,15 @@
+{
+  "spacing": {
+    "1":  { "value": "4px",  "comment": "half-step" },
+    "2":  { "value": "8px",  "comment": "8px grid base unit" },
+    "3":  { "value": "12px" },
+    "4":  { "value": "16px" },
+    "5":  { "value": "20px" },
+    "6":  { "value": "24px" },
+    "8":  { "value": "32px" },
+    "10": { "value": "40px" },
+    "12": { "value": "48px" },
+    "16": { "value": "64px" },
+    "contentMaxWidth": { "value": "1200px" }
+  }
+}

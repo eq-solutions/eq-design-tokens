@@ -1,0 +1,39 @@
+{
+  "typography": {
+    "fontStack": {
+      "value": "'Plus Jakarta Sans', 'Aptos Display', 'Aptos', Arial, sans-serif",
+      "comment": "Host app loads Plus Jakarta Sans and exposes it as --font-jakarta. This package never loads fonts."
+    },
+    "scale": {
+      "xs":   { "value": "11px" },
+      "sm":   { "value": "12px" },
+      "base": { "value": "14px" },
+      "md":   { "value": "15px" },
+      "lg":   { "value": "18px" },
+      "xl":   { "value": "22px" },
+      "2xl":  { "value": "28px" },
+      "3xl":  { "value": "36px" },
+      "4xl":  { "value": "48px" }
+    },
+    "weight": {
+      "regular": { "value": "400" },
+      "medium":  { "value": "500" },
+      "semi":    { "value": "600" },
+      "bold":    { "value": "700" },
+      "black":   { "value": "800" }
+    },
+    "body": {
+      "lineHeight": { "value": "1.5" },
+      "weight":     { "value": "400" }
+    },
+    "tracking": {
+      "tight":   { "value": "-0.01em" },
+      "tighter": { "value": "-0.02em" },
+      "label":   { "value": "0.06em" }
+    },
+    "label": {
+      "size":   { "value": "12px" },
+      "weight": { "value": "600" }
+    }
+  }
+}

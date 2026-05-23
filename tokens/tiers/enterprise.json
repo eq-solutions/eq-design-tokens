@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "tier": "enterprise",
+    "description": "Premium tier. Overrides the tier.accent token (allowing tenant-customisable accent) and the shadow.elevated token (richer floating-surface treatment). Apps that reference tier.accent and shadow.elevated automatically pick up the Enterprise treatment when [data-tier=enterprise] is set on root. Components that should NEVER differentiate by tier must reference color.brand.* and shadow.lg directly instead."
+  },
+  "tier": {
+    "accent": {
+      "value": "#1A5E8A",
+      "comment": "Enterprise default accent - deeper teal than brand.sky. Tenants on white-label plans may override at runtime via CSS variable injection on the data-tier element."
+    }
+  },
+  "shadow": {
+    "elevated": {
+      "value": "0 14px 48px rgba(26, 26, 46, 0.18), 0 2px 6px rgba(26, 26, 46, 0.08)",
+      "comment": "Enterprise floating-surface shadow - deeper, slightly cooler-tinted via ink-channel rgb."
+    }
+  }
+}
