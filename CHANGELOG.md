@@ -2,6 +2,31 @@
 
 All notable changes to `@eq-solutions/tokens` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [1.2.0] — 2026-05-31
+
+Direction D foundation completion — closes the gaps between the package and the locked design handoff.
+
+### Added
+
+- **Brand tokens** — `--eq-sky-deep` (alias of deep), `--eq-amber` (`#F59E0B`), `--eq-amber-deep` (`#B45309`), `--eq-slate` (`#94A3B8`), `--eq-live` (`#38BDF8`, the LIVE/sync dot). Exposed across CSS, TS (`colours.brand.*`), Tailwind preset, and Flutter Dart (`EqColors`).
+- **Global accessibility & motion CSS** — `tokens.css` now ships a suite-wide `:where(...):focus-visible` outline (zero-specificity, overridable) and a `prefers-reduced-motion` reset, so every app gets a consistent focus ring and honours reduced motion without re-declaring.
+
+### Changed
+
+- `build.mjs` kebab-cases multi-word brand token names (`amberDeep` → `--eq-amber-deep`).
+
+## [1.1.0] — 2026-05-31
+
+Direction D "Warm Sand" skin.
+
+### Added
+
+- **Clay accent** — `--eq-clay` / `--eq-clay-deep` / `--eq-clay-bg` (secondary warmth, brand decoration only).
+
+### Changed
+
+- **Warm-sand neutral ramp** — `--eq-gray-50..300` re-tuned to warm taupes (`#F6F3EE`/`#EFEAE1`/`#E4DDD2`/`#D4CCBE`); text greys (400–600) stay neutral.
+
 ## [1.0.0] — 2026-05-23
 
 Major restructure. Moves from hand-authored `tokens.ts` + `tokens.css` to a generated-from-JSON pipeline with tier scaffolding and Flutter Dart support.
