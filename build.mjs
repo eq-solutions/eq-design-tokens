@@ -113,6 +113,7 @@ function cssVarName(path) {
   if (p[0] === 'color' && p[1] === 'brand') return `--eq-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'gray')  return `--eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--eq-${p[2]}-${p[3]}`;
+  if (p[0] === 'color' && p[1] === 'accent') return `--eq-${kebab(p[2])}`;
   if (p[0] === 'typography' && p[1] === 'scale')     return `--eq-text-${p[2]}`;
   if (p[0] === 'typography' && p[1] === 'body')      return `--eq-body-${kebab(p[2])}`;
   if (p[0] === 'typography' && p[1] === 'tracking')  return `--eq-tracking-${p[2]}`;
@@ -138,7 +139,8 @@ function kebab(s) { return s.replace(/[A-Z]/g, m => '-' + m.toLowerCase()); }
 // Logical section order — matches the v0.1.0 hand-authored layout.
 const SECTIONS = [
   { title: 'BRAND COLOURS — use these and nothing else for brand surfaces',           filter: p => p[0] === 'color' && p[1] === 'brand' },
-  { title: 'NEUTRAL SCALE — Tailwind gray palette, exposed as semantic tokens',       filter: p => p[0] === 'color' && p[1] === 'gray' },
+  { title: 'ACCENT — secondary warmth (clay). Brand decoration only (~5%), never status.', filter: p => p[0] === 'color' && p[1] === 'accent' },
+  { title: 'NEUTRAL SCALE — Direction D warm-sand surfaces; text greys (400-600) stay neutral', filter: p => p[0] === 'color' && p[1] === 'gray' },
   { title: 'STATUS COLOURS — pass / fail / attention only, never as brand',           filter: p => p[0] === 'color' && p[1] === 'status' },
   { title: 'TIER — per-tenant accent. Defaults to brand.sky; Enterprise overrides.',  filter: p => p[0] === 'tier' },
   { title: 'TYPE — font stack, scale, weights, body, tracking, label',                filter: p => p[0] === 'typography' },
@@ -180,7 +182,7 @@ function buildCss() {
   const out = [];
   out.push(HEADER_LINE);
   out.push(`/* ============================================================================`);
-  out.push(` * @eq-solutions/tokens v1.0 — canonical EQ Solutions design tokens`);
+  out.push(` * @eq-solutions/tokens v1.1 — canonical EQ Solutions design tokens`);
   out.push(` *`);
   out.push(` * Single source of truth for colour, type, spacing, radii, shadow, motion.`);
   out.push(` * Base layer applies on :root. Per-tier deltas apply under [data-tier="..."].`);
@@ -235,6 +237,7 @@ function tailwindThemeKey(path) {
   if (p[0] === 'color' && p[1] === 'brand')  return `--color-eq-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'gray')   return `--color-eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--color-eq-${p[2]}-${p[3]}`;
+  if (p[0] === 'color' && p[1] === 'accent') return `--color-eq-${kebab(p[2])}`;
   if (p[0] === 'tier'  && p[1] === 'accent') return `--color-eq-tier-accent`;
   if (p[0] === 'typography' && p[1] === 'scale') return `--text-eq-${p[2]}`;
   if (p[0] === 'radius')  return `--radius-eq-${p[1]}`;
@@ -264,7 +267,7 @@ function buildTs() {
 
   return `${HEADER_LINE}
 /**
- * @eq-solutions/tokens v1.0 — programmatic access to EQ design tokens.
+ * @eq-solutions/tokens v1.1 — programmatic access to EQ design tokens.
  *
  * Use this when you need token values inside TypeScript / JavaScript rather
  * than CSS — e.g. inline styles for charts, canvas drawing, generated PDFs,
@@ -281,6 +284,11 @@ export const colours = {
     ink:   '${c.brand.ink.value}',
     grey:  '${c.brand.grey.value}',
     white: '${c.brand.white.value}',
+  },
+  accent: {
+    clay:     '${c.accent.clay.value}',
+    clayDeep: '${c.accent.clayDeep.value}',
+    clayBg:   '${c.accent.clayBg.value}',
   },
   gray: {
     50:  '${c.gray['50'].value}',
@@ -413,7 +421,7 @@ export default tokens;
 function buildTailwindPreset() {
   return `${HEADER_LINE}
 /**
- * @eq-solutions/tokens v1.0 — Tailwind preset (v3 + v4 compatible).
+ * @eq-solutions/tokens v1.1 — Tailwind preset (v3 + v4 compatible).
  *
  * For Tailwind v4 the inline @theme block in tokens.css is the preferred path;
  * this preset is for v3 apps or v4 apps that prefer JS config.
@@ -437,6 +445,9 @@ module.exports = {
         'eq-ink':   'var(--eq-ink)',
         'eq-grey':  'var(--eq-grey)',
         'eq-white': 'var(--eq-white)',
+        'eq-clay':      'var(--eq-clay)',
+        'eq-clay-deep': 'var(--eq-clay-deep)',
+        'eq-clay-bg':   'var(--eq-clay-bg)',
         'eq-gray': {
           50:  'var(--eq-gray-50)',
           100: 'var(--eq-gray-100)',
@@ -522,7 +533,7 @@ function buildDart() {
   const r = baseResolved.radius;
   const t = baseResolved.typography;
   return `${HEADER_LINE}
-// @eq-solutions/tokens v1.0 — Flutter constants for EQ Cards.
+// @eq-solutions/tokens v1.1 — Flutter constants for EQ Cards.
 //
 // Source of truth is tokens/*.json. Regenerate via \`npm run build\`.
 
@@ -538,6 +549,11 @@ class EqColors {
   static const Color ink   = ${hexToFlutterColor(c.brand.ink.value)};
   static const Color grey  = ${hexToFlutterColor(c.brand.grey.value)};
   static const Color white = ${hexToFlutterColor(c.brand.white.value)};
+
+  // Accent (Direction D)
+  static const Color clay     = ${hexToFlutterColor(c.accent.clay.value)};
+  static const Color clayDeep = ${hexToFlutterColor(c.accent.clayDeep.value)};
+  static const Color clayBg   = ${hexToFlutterColor(c.accent.clayBg.value)};
 
   // Neutral scale
   static const Color gray50  = ${hexToFlutterColor(c.gray['50'].value)};
@@ -613,7 +629,7 @@ function emit(filename, contents) {
   console.log(`  ${filename.padEnd(22)}${bytes.toLocaleString().padStart(8)} bytes`);
 }
 
-console.log('Building @eq-solutions/tokens v1.0 ...');
+console.log('Building @eq-solutions/tokens v1.1 ...');
 emit('tokens.css',          buildCss());
 emit('tokens.ts',           buildTs());
 emit('tailwind.preset.cjs', buildTailwindPreset());

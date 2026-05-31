@@ -8,12 +8,17 @@
       "grey":  { "value": "#666666", "comment": "secondary text, labels, metadata" },
       "white": { "value": "#FFFFFF", "comment": "text on blue/ink surfaces" }
     },
+    "accent": {
+      "clay":     { "value": "#A8572B", "comment": "Direction D secondary warmth accent - eyebrows / section accents, ~5%, brand only, never status" },
+      "clayDeep": { "value": "#8A4521", "comment": "clay hover" },
+      "clayBg":   { "value": "#FBF1E9", "comment": "clay tint surface" }
+    },
     "gray": {
-      "50":  { "value": "#F9FAFB" },
-      "100": { "value": "#F3F4F6" },
-      "200": { "value": "#E5E7EB", "comment": "default border on cards, inputs, table rows" },
-      "300": { "value": "#D1D5DB", "comment": "default input border" },
-      "400": { "value": "#9CA3AF" },
+      "50":  { "value": "#F6F3EE", "comment": "Direction D warm-sand surface" },
+      "100": { "value": "#EFEAE1", "comment": "Direction D warm-sand" },
+      "200": { "value": "#E4DDD2", "comment": "default border on cards, inputs, table rows (Direction D warm-sand)" },
+      "300": { "value": "#D4CCBE", "comment": "default input border (Direction D warm-sand)" },
+      "400": { "value": "#9CA3AF", "comment": "text grey - stays neutral (Direction D warms surfaces only)" },
       "500": { "value": "#6B7280" },
       "600": { "value": "#4B5563" }
     },
