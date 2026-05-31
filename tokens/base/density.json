@@ -1,0 +1,10 @@
+{
+  "density": {
+    "compact": {
+      "rowPad":  { "value": "8px",    "comment": "Table/list row padding — compact mode" },
+      "cellPad": { "value": "6px 12px", "comment": "Table cell padding — compact mode" },
+      "cardPad": { "value": "12px",   "comment": "Card body padding — compact mode" },
+      "fontSize": { "value": "{typography.scale.sm.value}", "comment": "Body font in compact" }
+    }
+  }
+}
