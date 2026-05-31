@@ -110,7 +110,7 @@ resolveTree(baseResolved);
 
 function cssVarName(path) {
   const p = path;
-  if (p[0] === 'color' && p[1] === 'brand') return `--eq-${p[2]}`;
+  if (p[0] === 'color' && p[1] === 'brand') return `--eq-${kebab(p[2])}`;
   if (p[0] === 'color' && p[1] === 'gray')  return `--eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--eq-${p[2]}-${p[3]}`;
   if (p[0] === 'color' && p[1] === 'accent') return `--eq-${kebab(p[2])}`;
@@ -182,7 +182,7 @@ function buildCss() {
   const out = [];
   out.push(HEADER_LINE);
   out.push(`/* ============================================================================`);
-  out.push(` * @eq-solutions/tokens v1.1 — canonical EQ Solutions design tokens`);
+  out.push(` * @eq-solutions/tokens v1.2 — canonical EQ Solutions design tokens`);
   out.push(` *`);
   out.push(` * Single source of truth for colour, type, spacing, radii, shadow, motion.`);
   out.push(` * Base layer applies on :root. Per-tier deltas apply under [data-tier="..."].`);
@@ -229,12 +229,33 @@ function buildCss() {
   out.push('}');
   out.push('');
 
+  // Global accessibility & motion — ships suite-wide from the foundation so every
+  // app gets a consistent focus ring + honours reduced-motion without re-declaring.
+  // :where() has zero specificity, so components can still override.
+  out.push('/* ============================================================================');
+  out.push(' * GLOBAL ACCESSIBILITY & MOTION — suite-wide, from the foundation.');
+  out.push(' * ========================================================================== */');
+  out.push(':where(a, button, input, select, textarea, [tabindex], [role="button"], [role="tab"]):focus-visible {');
+  out.push('  outline: 2px solid var(--eq-sky);');
+  out.push('  outline-offset: var(--eq-focus-offset, 2px);');
+  out.push('  border-radius: var(--eq-radius-chip, 4px);');
+  out.push('}');
+  out.push('@media (prefers-reduced-motion: reduce) {');
+  out.push('  *, *::before, *::after {');
+  out.push('    animation-duration: 0.01ms !important;');
+  out.push('    animation-iteration-count: 1 !important;');
+  out.push('    transition-duration: 0.01ms !important;');
+  out.push('    scroll-behavior: auto !important;');
+  out.push('  }');
+  out.push('}');
+  out.push('');
+
   return out.join('\n');
 }
 
 function tailwindThemeKey(path) {
   const p = path;
-  if (p[0] === 'color' && p[1] === 'brand')  return `--color-eq-${p[2]}`;
+  if (p[0] === 'color' && p[1] === 'brand')  return `--color-eq-${kebab(p[2])}`;
   if (p[0] === 'color' && p[1] === 'gray')   return `--color-eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--color-eq-${p[2]}-${p[3]}`;
   if (p[0] === 'color' && p[1] === 'accent') return `--color-eq-${kebab(p[2])}`;
@@ -267,7 +288,7 @@ function buildTs() {
 
   return `${HEADER_LINE}
 /**
- * @eq-solutions/tokens v1.1 — programmatic access to EQ design tokens.
+ * @eq-solutions/tokens v1.2 — programmatic access to EQ design tokens.
  *
  * Use this when you need token values inside TypeScript / JavaScript rather
  * than CSS — e.g. inline styles for charts, canvas drawing, generated PDFs,
@@ -278,12 +299,17 @@ function buildTs() {
 
 export const colours = {
   brand: {
-    sky:   '${c.brand.sky.value}',
-    deep:  '${c.brand.deep.value}',
-    ice:   '${c.brand.ice.value}',
-    ink:   '${c.brand.ink.value}',
-    grey:  '${c.brand.grey.value}',
-    white: '${c.brand.white.value}',
+    sky:     '${c.brand.sky.value}',
+    deep:    '${c.brand.deep.value}',
+    skyDeep: '${c.brand.skyDeep.value}',
+    ice:     '${c.brand.ice.value}',
+    ink:     '${c.brand.ink.value}',
+    grey:    '${c.brand.grey.value}',
+    white:   '${c.brand.white.value}',
+    amber:     '${c.brand.amber.value}',
+    amberDeep: '${c.brand.amberDeep.value}',
+    slate:     '${c.brand.slate.value}',
+    live:      '${c.brand.live.value}',
   },
   accent: {
     clay:     '${c.accent.clay.value}',
@@ -421,7 +447,7 @@ export default tokens;
 function buildTailwindPreset() {
   return `${HEADER_LINE}
 /**
- * @eq-solutions/tokens v1.1 — Tailwind preset (v3 + v4 compatible).
+ * @eq-solutions/tokens v1.2 — Tailwind preset (v3 + v4 compatible).
  *
  * For Tailwind v4 the inline @theme block in tokens.css is the preferred path;
  * this preset is for v3 apps or v4 apps that prefer JS config.
@@ -439,12 +465,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'eq-sky':   'var(--eq-sky)',
-        'eq-deep':  'var(--eq-deep)',
-        'eq-ice':   'var(--eq-ice)',
-        'eq-ink':   'var(--eq-ink)',
-        'eq-grey':  'var(--eq-grey)',
-        'eq-white': 'var(--eq-white)',
+        'eq-sky':      'var(--eq-sky)',
+        'eq-deep':     'var(--eq-deep)',
+        'eq-sky-deep': 'var(--eq-sky-deep)',
+        'eq-ice':      'var(--eq-ice)',
+        'eq-ink':      'var(--eq-ink)',
+        'eq-grey':     'var(--eq-grey)',
+        'eq-white':    'var(--eq-white)',
+        'eq-amber':      'var(--eq-amber)',
+        'eq-amber-deep': 'var(--eq-amber-deep)',
+        'eq-slate':      'var(--eq-slate)',
+        'eq-live':       'var(--eq-live)',
         'eq-clay':      'var(--eq-clay)',
         'eq-clay-deep': 'var(--eq-clay-deep)',
         'eq-clay-bg':   'var(--eq-clay-bg)',
@@ -533,7 +564,7 @@ function buildDart() {
   const r = baseResolved.radius;
   const t = baseResolved.typography;
   return `${HEADER_LINE}
-// @eq-solutions/tokens v1.1 — Flutter constants for EQ Cards.
+// @eq-solutions/tokens v1.2 — Flutter constants for EQ Cards.
 //
 // Source of truth is tokens/*.json. Regenerate via \`npm run build\`.
 
@@ -543,12 +574,17 @@ class EqColors {
   EqColors._();
 
   // Brand
-  static const Color sky   = ${hexToFlutterColor(c.brand.sky.value)};
-  static const Color deep  = ${hexToFlutterColor(c.brand.deep.value)};
-  static const Color ice   = ${hexToFlutterColor(c.brand.ice.value)};
-  static const Color ink   = ${hexToFlutterColor(c.brand.ink.value)};
-  static const Color grey  = ${hexToFlutterColor(c.brand.grey.value)};
-  static const Color white = ${hexToFlutterColor(c.brand.white.value)};
+  static const Color sky     = ${hexToFlutterColor(c.brand.sky.value)};
+  static const Color deep    = ${hexToFlutterColor(c.brand.deep.value)};
+  static const Color skyDeep = ${hexToFlutterColor(c.brand.skyDeep.value)};
+  static const Color ice     = ${hexToFlutterColor(c.brand.ice.value)};
+  static const Color ink     = ${hexToFlutterColor(c.brand.ink.value)};
+  static const Color grey    = ${hexToFlutterColor(c.brand.grey.value)};
+  static const Color white   = ${hexToFlutterColor(c.brand.white.value)};
+  static const Color amber     = ${hexToFlutterColor(c.brand.amber.value)};
+  static const Color amberDeep = ${hexToFlutterColor(c.brand.amberDeep.value)};
+  static const Color slate     = ${hexToFlutterColor(c.brand.slate.value)};
+  static const Color live      = ${hexToFlutterColor(c.brand.live.value)};
 
   // Accent (Direction D)
   static const Color clay     = ${hexToFlutterColor(c.accent.clay.value)};
@@ -629,7 +665,7 @@ function emit(filename, contents) {
   console.log(`  ${filename.padEnd(22)}${bytes.toLocaleString().padStart(8)} bytes`);
 }
 
-console.log('Building @eq-solutions/tokens v1.1 ...');
+console.log('Building @eq-solutions/tokens v1.2 ...');
 emit('tokens.css',          buildCss());
 emit('tokens.ts',           buildTs());
 emit('tailwind.preset.cjs', buildTailwindPreset());

@@ -6,7 +6,12 @@
       "ice":   { "value": "#EAF5FB", "comment": "page / card tint; table header alt fill" },
       "ink":   { "value": "#1A1A2E", "comment": "body text, dark sidebar - never pure black" },
       "grey":  { "value": "#666666", "comment": "secondary text, labels, metadata" },
-      "white": { "value": "#FFFFFF", "comment": "text on blue/ink surfaces" }
+      "white": { "value": "#FFFFFF", "comment": "text on blue/ink surfaces" },
+      "skyDeep":   { "value": "{color.brand.deep.value}", "comment": "alias of deep — used by Shell/Field" },
+      "amber":     { "value": "#F59E0B", "comment": "brand amber — attention emphasis (pair with status semantics, never as success/error)" },
+      "amberDeep": { "value": "#B45309", "comment": "amber hover / deeper amber" },
+      "slate":     { "value": "#94A3B8", "comment": "muted text / faint metadata on light surfaces" },
+      "live":      { "value": "#38BDF8", "comment": "live / sync indicator (the LIVE dot)" }
     },
     "accent": {
       "clay":     { "value": "#A8572B", "comment": "Direction D secondary warmth accent - eyebrows / section accents, ~5%, brand only, never status" },
