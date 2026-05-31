@@ -2,6 +2,16 @@
 
 All notable changes to `@eq-solutions/tokens` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [1.3.0] — 2026-05-31
+
+Compact density mode — D3.2.
+
+### Added
+
+- **`tokens/base/density.json`** — new density token group with compact-mode values for row padding, cell padding, card padding, and body font size.
+- **`[data-density="compact"]` CSS block** in `tokens.css` — overrides `--eq-space-4` (8px), `--eq-space-3` (6px), and `--eq-radius-card` (to chip radius). Apply on `document.body` or any container to activate compact mode on data-heavy surfaces (tables, lists, cards).
+- **Density custom properties on `:root`** — `--eq-density-compact-*` tokens documented for reference, resolving font-size to `var(--eq-text-sm)`.
+
 ## [1.2.0] — 2026-05-31
 
 Direction D foundation completion — closes the gaps between the package and the locked design handoff.
