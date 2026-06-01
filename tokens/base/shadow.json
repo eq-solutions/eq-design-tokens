@@ -11,6 +11,10 @@
     "elevated": {
       "value": "{shadow.lg.value}",
       "comment": "premium surfaces - Standard/Advanced inherit lg; Enterprise overrides this with a richer treatment"
+    },
+    "overlay": {
+      "value": "rgba(26, 26, 46, 0.45)",
+      "comment": "modal / drawer backdrop — --eq-ink at 45% opacity"
     }
   }
 }
