@@ -101,6 +101,9 @@
   --eq-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15); /* modals, drawers, large floating surfaces */
   --eq-shadow-elevated: var(--eq-shadow-lg); /* premium surfaces - Standard/Advanced inherit lg; Enterprise overrides this with a richer treatment */
 
+  /* ── OVERLAY — modal / drawer backdrop (--eq-ink at 45% opacity) ─────────────────────────────────── */
+  --eq-overlay: rgba(26, 26, 46, 0.45);
+
   /* ── MOTION — 150ms default. No bounce. ─────────────────────────────────── */
   --eq-duration-default: 150ms; /* default transition - colour, border, opacity */
   --eq-duration-drawer: 300ms; /* sidebar drawer slide */
