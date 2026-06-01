@@ -96,10 +96,11 @@
   --eq-border-color: var(--eq-gray-200); /* default border on cards, inputs, table rows */
   --eq-input-border-color: var(--eq-gray-300); /* default input border */
 
-  /* ── SHADOWS — floating UI only. Static cards sit flat with a 1px border. ─────────────────────────────────── */
+  /* ── SHADOWS / OVERLAY — floating UI only. Static cards sit flat with a 1px border. ─────────────────────────────────── */
   --eq-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04); /* floating UI only - static cards sit flat with a 1px border */
   --eq-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15); /* modals, drawers, large floating surfaces */
   --eq-shadow-elevated: var(--eq-shadow-lg); /* premium surfaces - Standard/Advanced inherit lg; Enterprise overrides this with a richer treatment */
+  --eq-overlay: rgba(26, 26, 46, 0.45); /* modal / drawer backdrop — --eq-ink at 45% opacity */
 
   /* ── MOTION — 150ms default. No bounce. ─────────────────────────────────── */
   --eq-duration-default: 150ms; /* default transition - colour, border, opacity */
@@ -181,6 +182,7 @@
   --shadow-eq-sm: var(--eq-shadow-sm);
   --shadow-eq-lg: var(--eq-shadow-lg);
   --shadow-eq-elevated: var(--eq-shadow-elevated);
+  --color-eq-overlay: var(--eq-overlay);
   --color-eq-tier-accent: var(--eq-tier-accent);
   --text-eq-xs: var(--eq-text-xs);
   --text-eq-sm: var(--eq-text-sm);

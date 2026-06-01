@@ -114,6 +114,7 @@ export const shadows = {
   sm: '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
   lg: '0 10px 40px rgba(0, 0, 0, 0.15)',
   elevated: '0 10px 40px rgba(0, 0, 0, 0.15)',
+  overlay: 'rgba(26, 26, 46, 0.45)',
 } as const;
 
 export const motion = {
