@@ -1,0 +1,11 @@
+name: eq_design_tokens
+description: Canonical EQ Solutions design tokens — Flutter/Dart constants for colour, spacing, radius, and typography.
+version: 1.3.1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter

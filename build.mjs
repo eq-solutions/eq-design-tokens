@@ -19,7 +19,7 @@
  * Usage:  node build.mjs
  */
 
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -682,9 +682,19 @@ function emit(filename, contents) {
   console.log(`  ${filename.padEnd(22)}${bytes.toLocaleString().padStart(8)} bytes`);
 }
 
+const dartOutput = buildDart();
+
 console.log(`Building @eq-solutions/tokens v${PKG_VERSION} ...`);
 emit('tokens.css',          buildCss());
 emit('tokens.ts',           buildTs());
 emit('tailwind.preset.cjs', buildTailwindPreset());
-emit('tokens.dart',         buildDart());
+emit('tokens.dart',         dartOutput);
+
+// Flutter package entry point — mirrors tokens.dart for pub.dev / git dep consumers.
+mkdirSync(join(ROOT, 'lib'), { recursive: true });
+emit('lib/eq_design_tokens.dart', dartOutput.replace(
+  HEADER_LINE,
+  `${HEADER_LINE}\n// Flutter package entry point — import as: import 'package:eq_design_tokens/eq_design_tokens.dart';`
+));
+
 console.log('Done.');
