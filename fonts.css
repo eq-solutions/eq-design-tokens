@@ -1,0 +1,19 @@
+/* EQ Design Tokens — self-hosted Plus Jakarta Sans via @fontsource.
+   Import this file ONCE at your app entry point to load the font without
+   hitting google.com/googleapis.com. Requires @fontsource/plus-jakarta-sans
+   to be resolvable in your node_modules (it is a dependency of this package).
+
+   Usage:
+     import '@eq-solutions/tokens/fonts.css';    // JS/TS bundler
+     @import '@eq-solutions/tokens/fonts.css';   // CSS bundler (Vite, etc.)
+
+   For vanilla HTML apps (no bundler), host the woff2 files separately
+   and write your own @font-face declarations, or keep using the Google Fonts
+   CDN as a fallback until a self-hosted CDN is available.
+*/
+
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
