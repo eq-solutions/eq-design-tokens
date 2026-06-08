@@ -117,6 +117,10 @@
   --eq-density-compact-cell-pad: 6px 12px; /* Table cell padding — compact mode */
   --eq-density-compact-card-pad: 12px; /* Card body padding — compact mode */
   --eq-density-compact-font-size: var(--eq-text-sm); /* Body font in compact */
+
+  /* ── ASSETS — brand logo URLs (CDN-hosted SVGs) ─────────────────────────────────── */
+  --eq-logo-white: https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-white-on-transparent-cropped.svg; /* EQ logo — white mark, transparent bg. Use on blue/ink surfaces. */
+  --eq-logo-blue: https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-blue-on-transparent-cropped.svg; /* EQ logo — sky-blue mark, transparent bg. Use on white/ice/light surfaces. */
 }
 
 [data-tier="standard"] {

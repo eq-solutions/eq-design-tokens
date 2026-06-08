@@ -1,0 +1,8 @@
+{
+  "assets": {
+    "logo": {
+      "white": { "value": "https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-white-on-transparent-cropped.svg", "comment": "EQ logo — white mark, transparent bg. Use on blue/ink surfaces." },
+      "blue":  { "value": "https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-blue-on-transparent-cropped.svg",  "comment": "EQ logo — sky-blue mark, transparent bg. Use on white/ice/light surfaces." }
+    }
+  }
+}

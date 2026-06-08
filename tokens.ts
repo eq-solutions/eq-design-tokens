@@ -133,6 +133,13 @@ export const tier = {
   accent: '#3DA8D8',
 } as const;
 
+export const assets = {
+  logo: {
+    white: 'https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-white-on-transparent-cropped.svg',
+    blue:  'https://pub-409bd651f2e549f4907f5a856a9264ae.r2.dev/eq-blue-on-transparent-cropped.svg',
+  },
+} as const;
+
 /**
  * Convenience aggregate. Prefer named imports
  * (`import { colours } from '@eq-solutions/tokens'`) over destructuring this default.
@@ -147,6 +154,7 @@ export const tokens = {
   motion,
   focus,
   tier,
+  assets,
 } as const;
 
 export default tokens;
