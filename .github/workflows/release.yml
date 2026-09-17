@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -51,3 +52,28 @@ jobs:
         with:
           files: eq-design-tokens-${{ github.ref_name }}.tar.gz
           generate_release_notes: true
+
+      # This job only runs on a version-tag push (see the job-level `if`
+      # above), so a failure here has no PR to surface it on -- same silent-
+      # failure shape as eq-solutions/eq-ui's release.yml (eq-ui#54). Default
+      # GITHUB_TOKEN -- this repo has no other secrets configured at all
+      # (`gh secret list` is empty), so nothing here can expire.
+      - name: Open issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          REPO="${{ github.repository }}"
+          RUN_URL="${{ github.server_url }}/${REPO}/actions/runs/${{ github.run_id }}"
+          TITLE="Release workflow failing on tag push"
+          EXISTING=$(gh issue list --repo "$REPO" --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty' || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$REPO" --body "Failed again: $RUN_URL (tag ${{ github.ref_name }})" || true
+            echo "Commented on existing issue #$EXISTING"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body "Tagging ${{ github.ref_name }} failed to produce a GitHub release (build, bundling, or the release-upload action).
+
+Run: $RUN_URL" || true
+            echo "Opened new failure issue"
+          fi
