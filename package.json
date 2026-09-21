@@ -4,7 +4,7 @@
   "private": false,
   "license": "UNLICENSED",
   "author": "CDC Solutions Pty Ltd",
-  "description": "Canonical EQ Solutions design tokens â€” colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing). Outputs CSS, TS, Tailwind preset, and Flutter Dart constants from one JSON source. Tiered (Standard / Advanced / Enterprise) via [data-tier] selectors.",
+  "description": "Canonical EQ Solutions design tokens — colour, type, spacing, radii, shadow, motion. Single source of truth across every EQ surface (Field, Service, Quotes, Cards, Shell, Intake, Expenses, Ops, marketing). Outputs CSS, TS, Tailwind preset, and Flutter Dart constants from one JSON source. Tiered (Standard / Advanced / Enterprise) via [data-tier] selectors.",
   "type": "module",
   "repository": {
     "type": "git",
