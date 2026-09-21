@@ -20,9 +20,9 @@ jobs:
         run: node build.mjs
       - name: Fail if generated files drifted from committed
         run: |
-          if [[ -n "$(git status --porcelain tokens.css tokens.ts tailwind.preset.cjs tokens.dart)" ]]; then
+          if [[ -n "$(git status --porcelain tokens.css tokens.ts tailwind.preset.cjs tokens.dart lib/eq_design_tokens.dart)" ]]; then
             echo "::error::Generated files do not match source. Run 'npm run build' and commit the result."
-            git diff tokens.css tokens.ts tailwind.preset.cjs tokens.dart
+            git diff tokens.css tokens.ts tailwind.preset.cjs tokens.dart lib/eq_design_tokens.dart
             exit 1
           fi
           echo "Build output is in sync with source."

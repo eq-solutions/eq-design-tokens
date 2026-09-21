@@ -4,25 +4,28 @@ Canonical EQ Solutions design tokens. The single source of truth for colour, typ
 
 If you're adding a new EQ surface or changing an existing one, import from here. Hardcoded hex values, raw px shadows, and bespoke radii outside this package count as drift and should be migrated as you touch them.
 
-## What v1.0 ships
+## Current package
 
 | Output | Path | For |
 |---|---|---|
-| CSS | `tokens.css` | Vanilla CSS + Tailwind v4 (`@theme` block) + tier selectors |
+| CSS | `tokens.css` | Vanilla CSS + Tailwind v4 (`@theme` block) + tier / density selectors + suite-wide a11y CSS |
+| Self-hosted fonts | `fonts.css` | Plus Jakarta Sans via `@fontsource` (optional; host apps may still load the font themselves) |
 | TypeScript | `tokens.ts` | Charts, canvas, PDFs, anywhere CSS doesn't reach |
 | Tailwind preset | `tailwind.preset.cjs` | Tailwind v3 apps (or v4 with JS-config preference) |
-| Flutter Dart | `tokens.dart` | EQ Cards and any future Flutter consumer |
+| Flutter Dart | `lib/eq_design_tokens.dart` (+ root `tokens.dart`) | EQ Cards and any Flutter consumer |
 
-All four artefacts are generated from one JSON source under [`tokens/`](./tokens/). **Do not edit the generated files directly** — edit JSON, run `npm run build`, commit both.
+Artefacts are generated from one JSON source under [`tokens/`](./tokens/). **Do not edit the generated files directly** — edit JSON, run `npm run build`, commit both.
+
+Latest release: **v1.3.3**.
 
 ## Install
 
 Distributed via git URL. Pin to a tag for reproducibility.
 
 ```sh
-pnpm add github:eq-solutions/eq-design-tokens#v1.0.0
+pnpm add github:eq-solutions/eq-design-tokens#v1.3.3
 # or
-npm install github:eq-solutions/eq-design-tokens#v1.0.0
+npm install github:eq-solutions/eq-design-tokens#v1.3.3
 ```
 
 ## Tier model — Standard / Advanced / Enterprise
@@ -59,7 +62,13 @@ When in doubt: use the brand token, not the tier token. Tier differentiation sho
 @import "tailwindcss";
 ```
 
-Host app loads **Plus Jakarta Sans** and exposes it as `--font-jakarta`:
+Optional self-hosted font (instead of Google Fonts / `next/font`):
+
+```css
+@import "@eq-solutions/tokens/fonts.css";
+```
+
+Or load **Plus Jakarta Sans** in the host app and expose it as `--font-jakarta`:
 
 ```ts
 // app/layout.tsx
@@ -146,17 +155,16 @@ Add to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  eq_tokens:
+  eq_design_tokens:
     git:
       url: https://github.com/eq-solutions/eq-design-tokens.git
-      ref: v1.0.0
-      path: tokens.dart
+      ref: v1.3.3
 ```
 
 Then:
 
 ```dart
-import 'package:eq_tokens/tokens.dart';
+import 'package:eq_design_tokens/eq_design_tokens.dart';
 
 Container(
   decoration: BoxDecoration(
@@ -178,32 +186,36 @@ Container(
 
 > Tier-aware overrides are CSS-only today. Cards is single-tenant from the user's perspective (one wallet per person), so tier theming isn't wired into Flutter yet. If a future Flutter consumer needs tier awareness, the build pipeline can emit tier-specific Dart classes.
 
-## What's in v1.0
+## What's included
 
 | Group | Tokens |
 |---|---|
-| Brand colours | `--eq-sky` `--eq-deep` `--eq-ice` `--eq-ink` `--eq-grey` `--eq-white` |
-| Neutral scale | `--eq-gray-50` through `--eq-gray-600` |
+| Brand colours | `--eq-sky` `--eq-deep` `--eq-sky-deep` `--eq-ice` `--eq-ink` `--eq-grey` `--eq-white` plus amber / slate / live / clay accents |
+| Neutral scale | `--eq-gray-50` through `--eq-gray-600` (warm-sand ramp) |
 | Status | success / warning / error (bg + text pairs) |
+| Overlay | `--eq-overlay` |
+| Logo assets | `--eq-logo-white` / `--eq-logo-blue` (CDN SVG URLs) |
 | Tier accent | `--eq-tier-accent` (Standard inherits brand.sky; Enterprise overrides) |
+| Density | `[data-density="compact"]` overrides for data-heavy surfaces |
 | Type scale | `--eq-text-xs` (11px) through `--eq-text-4xl` (48px), weight scale 400-800 |
 | Body / tracking / label | line-height, tracking variants, label size/weight |
 | Spacing | `--eq-space-1` (4px) through `--eq-space-16` (64px) on the 8px grid |
 | Radii | chip 4 · input 6 · card 8 · shell 12 · pill 9999 |
 | Borders | hairline 1px, default + input variants |
 | Shadows | `sm` (floating cards) + `lg` (modals) + `elevated` (premium surfaces) |
-| Motion | 150ms default · 300ms drawer · 700ms spinner · cubic-bezier ease |
-| Focus | `--eq-focus-ring` + offset — required on every focusable input |
+| Motion | 150ms default · 300ms drawer · 700ms spinner · cubic-bezier ease; `prefers-reduced-motion` reset |
+| Focus | `--eq-focus-ring` + offset + suite-wide `:focus-visible` outline |
 
 See [`tokens.css`](./tokens.css) for the full file with inline documentation.
 
-## What's *not* in v1.0
+## What's *not* in this package
 
-- No Plus Jakarta Sans font files — host apps load the font themselves and expose it as `--font-jakarta`.
-- No React / Vue / Svelte components — those will live in a separate `@eq-solutions/ui` package once primitives stabilise.
-- No icons — likewise a separate package (`@eq-solutions/icons`) when extracted.
+- No React / Vue / Svelte components — those live in [`@eq-solutions/ui`](https://github.com/eq-solutions/eq-ui).
+- No icons — separate package (`@eq-solutions/icons`) when extracted.
 - No SKS subsidiary palette — SKS lives outside the EQ token system.
 - No runtime tier-attribute logic — Shell sets `data-tier`; this package only emits the CSS that responds to it.
+
+Host apps may still load Plus Jakarta Sans themselves (e.g. `next/font`) and expose `--font-jakarta`. Prefer `@eq-solutions/tokens/fonts.css` when you want the self-hosted Fontsource path without hitting Google.
 
 ## Hard don'ts
 
@@ -218,7 +230,7 @@ See [`tokens.css`](./tokens.css) for the full file with inline documentation.
 
 1. Edit the relevant file under [`tokens/base/`](./tokens/base/) or [`tokens/tiers/`](./tokens/tiers/).
 2. Run `npm run build`.
-3. Commit JSON source AND the regenerated files together (`tokens.css`, `tokens.ts`, `tailwind.preset.cjs`, `tokens.dart`).
+3. Commit JSON source AND the regenerated files together (`tokens.css`, `tokens.ts`, `tailwind.preset.cjs`, `tokens.dart`, `lib/eq_design_tokens.dart`).
 4. Update [`CHANGELOG.md`](./CHANGELOG.md) with the why.
 5. Tag a release: `git tag v1.x.y && git push --tags` — CI builds and attaches the release artefact.
 
@@ -236,7 +248,8 @@ All changes route through Royce. Document rationale in [`CHANGELOG.md`](./CHANGE
 
 ## Related
 
+- [`eq-solutions/eq-ui`](https://github.com/eq-solutions/eq-ui) — shared React components consuming this package.
 - [`eq-solutions/eq-shell`](https://github.com/eq-solutions/eq-shell) — cross-app auth + navigation chrome. Sets `data-tier` on root.
 - [`eq-solutions/eq-field`](https://github.com/eq-solutions/eq-field) — gold-standard Field app.
-- [`Milmlow/eq-solves-service`](https://github.com/Milmlow/eq-solves-service) — EQ Service (first consumer of this package; v0.1.0 → v1.0.0 migration pending).
-- [`eq-solutions/eq-cards`](https://github.com/eq-solutions/eq-cards) — Flutter consumer (`tokens.dart`).
+- [`Milmlow/eq-solves-service`](https://github.com/Milmlow/eq-solves-service) — EQ Service (early consumer of this package).
+- [`eq-solutions/eq-cards`](https://github.com/eq-solutions/eq-cards) — Flutter consumer (`eq_design_tokens`).
