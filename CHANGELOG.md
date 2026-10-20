@@ -2,6 +2,19 @@
 
 All notable changes to `@eq-solutions/tokens` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [1.4.0] — 2026-10-20
+
+Tokens for the open brand decisions applied in `@eq-solutions/ui` 1.18.0. Visible to every consumer: read **Changed** first.
+
+### Added
+
+- `--eq-border-light` (card header divider), `--eq-selection-bg` / `--eq-selection-bg-hover` (selected table row), `--eq-ink-hover`, `--eq-on-ink-hover` / `-active` / `-muted` (alpha fills on Ink surfaces), `--eq-error-solid`, and `--eq-success-dot` / `--eq-warning-dot` / `--eq-error-dot` (600-shade status dots).
+
+### Changed
+
+- `--eq-label-size` 12px → 11px (weight 600 and `--eq-tracking-label` 0.06em unchanged). Every label, table header and badge gets slightly smaller.
+- Compact density no longer redefines `--eq-space-3`, `--eq-space-4` and `--eq-radius-card` for every descendant. `[data-density="compact"]` now sets `--eq-density-row-pad`, `--eq-density-cell-pad` and `--eq-density-card-pad` instead. Apps that relied on the old remap (eq-shell `App.css`, eq-field `styles/tokens.css`) should read the new density tokens, or set their own scoped values.
+
 ## [1.3.3] — 2026-06-08
 
 Brand logo asset tokens.

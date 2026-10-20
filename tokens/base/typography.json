@@ -32,7 +32,7 @@
       "label":   { "value": "0.06em" }
     },
     "label": {
-      "size":   { "value": "12px" },
+      "size":   { "value": "11px", "comment": "was 12px before 1.4.0" },
       "weight": { "value": "600" }
     }
   }

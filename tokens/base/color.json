@@ -11,7 +11,8 @@
       "amber":     { "value": "#F59E0B", "comment": "brand amber — attention emphasis (pair with status semantics, never as success/error)" },
       "amberDeep": { "value": "#B45309", "comment": "amber hover / deeper amber" },
       "slate":     { "value": "#94A3B8", "comment": "muted text / faint metadata on light surfaces" },
-      "live":      { "value": "#38BDF8", "comment": "live / sync indicator (the LIVE dot)" }
+      "live":      { "value": "#38BDF8", "comment": "live / sync indicator (the LIVE dot)" },
+      "inkHover":  { "value": "#11111F", "comment": "hover for Ink fills (active slicer, bulk bar)" }
     },
     "accent": {
       "clay":     { "value": "#A8572B", "comment": "Direction D secondary warmth accent - eyebrows / section accents, ~5%, brand only, never status" },
@@ -30,16 +31,29 @@
     "status": {
       "success": {
         "bg":   { "value": "#F0FDF4" },
-        "text": { "value": "#15803D" }
+        "text": { "value": "#15803D" },
+        "dot":  { "value": "#16A34A", "comment": "status dot - 600 shade" }
       },
       "warning": {
         "bg":   { "value": "#FFFBEB" },
-        "text": { "value": "#B45309" }
+        "text": { "value": "#B45309" },
+        "dot":  { "value": "#D97706", "comment": "status dot - 600 shade" }
       },
       "error": {
         "bg":   { "value": "#FEF2F2" },
-        "text": { "value": "#B91C1C" }
+        "text": { "value": "#B91C1C" },
+        "dot":  { "value": "#DC2626", "comment": "status dot - 600 shade" },
+        "solid": { "value": "rgba(185, 28, 28, 0.92)", "comment": "destructive hover on a dark (Ink) bulk bar" }
       }
+    },
+    "selection": {
+      "bg":      { "value": "#E1F1FB", "comment": "selected table row" },
+      "bgHover": { "value": "#D5ECF8", "comment": "selected table row, hovered" }
+    },
+    "onInk": {
+      "hover":  { "value": "rgba(255, 255, 255, 0.10)", "comment": "hover fill on Ink surfaces (sidebar, bulk bar)" },
+      "active": { "value": "rgba(255, 255, 255, 0.16)", "comment": "active fill / divider on Ink surfaces" },
+      "muted":  { "value": "rgba(255, 255, 255, 0.70)", "comment": "secondary label on Ink surfaces" }
     }
   }
 }
