@@ -115,6 +115,8 @@ function cssVarName(path) {
   if (p[0] === 'color' && p[1] === 'gray')  return `--eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--eq-${p[2]}-${p[3]}`;
   if (p[0] === 'color' && p[1] === 'accent') return `--eq-${kebab(p[2])}`;
+  if (p[0] === 'color' && p[1] === 'selection') return `--eq-selection-${kebab(p[2])}`;
+  if (p[0] === 'color' && p[1] === 'onInk') return `--eq-on-ink-${p[2]}`;
   if (p[0] === 'typography' && p[1] === 'scale')     return `--eq-text-${p[2]}`;
   if (p[0] === 'typography' && p[1] === 'body')      return `--eq-body-${kebab(p[2])}`;
   if (p[0] === 'typography' && p[1] === 'tracking')  return `--eq-tracking-${p[2]}`;
@@ -146,6 +148,7 @@ const SECTIONS = [
   { title: 'ACCENT — secondary warmth (clay). Brand decoration only (~5%), never status.', filter: p => p[0] === 'color' && p[1] === 'accent' },
   { title: 'NEUTRAL SCALE — Direction D warm-sand surfaces; text greys (400-600) stay neutral', filter: p => p[0] === 'color' && p[1] === 'gray' },
   { title: 'STATUS COLOURS — pass / fail / attention only, never as brand',           filter: p => p[0] === 'color' && p[1] === 'status' },
+  { title: 'SELECTION + ON-INK — table selection fills and alpha fills for Ink surfaces', filter: p => p[0] === 'color' && (p[1] === 'selection' || p[1] === 'onInk') },
   { title: 'TIER — per-tenant accent. Defaults to brand.sky; Enterprise overrides.',  filter: p => p[0] === 'tier' },
   { title: 'TYPE — font stack, scale, weights, body, tracking, label',                filter: p => p[0] === 'typography' },
   { title: 'SPACING — 8-pixel grid, with 4 as the half-step',                         filter: p => p[0] === 'spacing' },
@@ -227,9 +230,9 @@ function buildCss() {
   out.push(' * container to tighten table rows, cards, and body font on data-heavy surfaces.');
   out.push(' * ========================================================================== */');
   out.push('[data-density="compact"] {');
-  out.push('  --eq-space-4: 8px;');
-  out.push('  --eq-space-3: 6px;');
-  out.push('  --eq-radius-card: var(--eq-radius-chip);');
+  out.push('  --eq-density-row-pad: var(--eq-density-compact-row-pad);');
+  out.push('  --eq-density-cell-pad: var(--eq-density-compact-cell-pad);');
+  out.push('  --eq-density-card-pad: var(--eq-density-compact-card-pad);');
   out.push('}');
   out.push('');
 

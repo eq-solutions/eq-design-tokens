@@ -1,6 +1,7 @@
 {
   "border": {
     "width":       { "value": "1px" },
+    "light":       { "value": "{color.gray.100.value}", "comment": "light divider (card header, table row separators)" },
     "color":       { "value": "{color.gray.200.value}", "comment": "default border on cards, inputs, table rows" },
     "inputColor":  { "value": "{color.gray.300.value}", "comment": "default input border" }
   }

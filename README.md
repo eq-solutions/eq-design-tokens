@@ -16,16 +16,16 @@ If you're adding a new EQ surface or changing an existing one, import from here.
 
 Artefacts are generated from one JSON source under [`tokens/`](./tokens/). **Do not edit the generated files directly** — edit JSON, run `npm run build`, commit both.
 
-Latest release: **v1.3.3**.
+Latest release: **v1.4.0**.
 
 ## Install
 
 Distributed via git URL. Pin to a tag for reproducibility.
 
 ```sh
-pnpm add github:eq-solutions/eq-design-tokens#v1.3.3
+pnpm add github:eq-solutions/eq-design-tokens#v1.4.0
 # or
-npm install github:eq-solutions/eq-design-tokens#v1.3.3
+npm install github:eq-solutions/eq-design-tokens#v1.4.0
 ```
 
 ## Tier model — Standard / Advanced / Enterprise
@@ -158,7 +158,7 @@ dependencies:
   eq_design_tokens:
     git:
       url: https://github.com/eq-solutions/eq-design-tokens.git
-      ref: v1.3.3
+      ref: v1.4.0
 ```
 
 Then:
