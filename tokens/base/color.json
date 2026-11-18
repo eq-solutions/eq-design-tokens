@@ -19,6 +19,12 @@
       "clayDeep": { "value": "#8A4521", "comment": "clay hover" },
       "clayBg":   { "value": "#FBF1E9", "comment": "clay tint surface" }
     },
+    "pastel": {
+      "teal":     { "value": "#7DCFD9", "comment": "soft teal - charts, progress, secondary data. Ink text only" },
+      "peach":    { "value": "#FDE3D0", "comment": "soft peach - warm callout cards. Ink text only" },
+      "blush":    { "value": "#F4C2C2", "comment": "soft blush - human notes, comments, badges. Never error/status. Ink text only" },
+      "lavender": { "value": "#E4E0F7", "comment": "soft lavender - tags, alternate cards, secondary sections. Ink text only" }
+    },
     "gray": {
       "50":  { "value": "#F6F3EE", "comment": "Direction D warm-sand surface" },
       "100": { "value": "#EFEAE1", "comment": "Direction D warm-sand" },

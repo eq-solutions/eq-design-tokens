@@ -115,6 +115,7 @@ function cssVarName(path) {
   if (p[0] === 'color' && p[1] === 'gray')  return `--eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--eq-${p[2]}-${p[3]}`;
   if (p[0] === 'color' && p[1] === 'accent') return `--eq-${kebab(p[2])}`;
+  if (p[0] === 'color' && p[1] === 'pastel') return `--eq-pastel-${kebab(p[2])}`;
   if (p[0] === 'color' && p[1] === 'selection') return `--eq-selection-${kebab(p[2])}`;
   if (p[0] === 'color' && p[1] === 'onInk') return `--eq-on-ink-${p[2]}`;
   if (p[0] === 'typography' && p[1] === 'scale')     return `--eq-text-${p[2]}`;
@@ -146,6 +147,7 @@ function kebab(s) { return s.replace(/[A-Z]/g, m => '-' + m.toLowerCase()); }
 const SECTIONS = [
   { title: 'BRAND COLOURS — use these and nothing else for brand surfaces',           filter: p => p[0] === 'color' && p[1] === 'brand' },
   { title: 'ACCENT — secondary warmth (clay). Brand decoration only (~5%), never status.', filter: p => p[0] === 'color' && p[1] === 'accent' },
+  { title: 'PASTELS — supporting tints. Ink text only; never buttons, nav or status.', filter: p => p[0] === 'color' && p[1] === 'pastel' },
   { title: 'NEUTRAL SCALE — Direction D warm-sand surfaces; text greys (400-600) stay neutral', filter: p => p[0] === 'color' && p[1] === 'gray' },
   { title: 'STATUS COLOURS — pass / fail / attention only, never as brand',           filter: p => p[0] === 'color' && p[1] === 'status' },
   { title: 'SELECTION + ON-INK — table selection fills and alpha fills for Ink surfaces', filter: p => p[0] === 'color' && (p[1] === 'selection' || p[1] === 'onInk') },
@@ -279,6 +281,7 @@ function tailwindThemeKey(path) {
   if (p[0] === 'color' && p[1] === 'gray')   return `--color-eq-gray-${p[2]}`;
   if (p[0] === 'color' && p[1] === 'status') return `--color-eq-${p[2]}-${p[3]}`;
   if (p[0] === 'color' && p[1] === 'accent') return `--color-eq-${kebab(p[2])}`;
+  if (p[0] === 'color' && p[1] === 'pastel') return `--color-eq-pastel-${kebab(p[2])}`;
   if (p[0] === 'tier'  && p[1] === 'accent') return `--color-eq-tier-accent`;
   if (p[0] === 'typography' && p[1] === 'scale') return `--text-eq-${p[2]}`;
   if (p[0] === 'radius')  return `--radius-eq-${p[1]}`;
@@ -336,6 +339,12 @@ export const colours = {
     clay:     '${c.accent.clay.value}',
     clayDeep: '${c.accent.clayDeep.value}',
     clayBg:   '${c.accent.clayBg.value}',
+  },
+  pastel: {
+    teal:     '${c.pastel.teal.value}',
+    peach:    '${c.pastel.peach.value}',
+    blush:    '${c.pastel.blush.value}',
+    lavender: '${c.pastel.lavender.value}',
   },
   gray: {
     50:  '${c.gray['50'].value}',
@@ -509,6 +518,10 @@ module.exports = {
         'eq-clay':      'var(--eq-clay)',
         'eq-clay-deep': 'var(--eq-clay-deep)',
         'eq-clay-bg':   'var(--eq-clay-bg)',
+        'eq-pastel-teal':     'var(--eq-pastel-teal)',
+        'eq-pastel-peach':    'var(--eq-pastel-peach)',
+        'eq-pastel-blush':    'var(--eq-pastel-blush)',
+        'eq-pastel-lavender': 'var(--eq-pastel-lavender)',
         'eq-gray': {
           50:  'var(--eq-gray-50)',
           100: 'var(--eq-gray-100)',
@@ -620,6 +633,12 @@ class EqColors {
   static const Color clay     = ${hexToFlutterColor(c.accent.clay.value)};
   static const Color clayDeep = ${hexToFlutterColor(c.accent.clayDeep.value)};
   static const Color clayBg   = ${hexToFlutterColor(c.accent.clayBg.value)};
+
+  // Pastels (supporting tints - Ink text only, never status)
+  static const Color pastelTeal     = ${hexToFlutterColor(c.pastel.teal.value)};
+  static const Color pastelPeach    = ${hexToFlutterColor(c.pastel.peach.value)};
+  static const Color pastelBlush    = ${hexToFlutterColor(c.pastel.blush.value)};
+  static const Color pastelLavender = ${hexToFlutterColor(c.pastel.lavender.value)};
 
   // Neutral scale
   static const Color gray50  = ${hexToFlutterColor(c.gray['50'].value)};
