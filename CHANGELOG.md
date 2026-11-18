@@ -2,6 +2,15 @@
 
 All notable changes to `@eq-solutions/tokens` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [1.6.0] — 2026-11-18
+
+Stronger keyboard focus outline. Visible to every consumer: read **Changed** first.
+
+### Changed
+
+- Global `:focus-visible` outline is now solid 2px `--eq-deep` (was `--eq-sky`, 2.7:1 on white, below the 3:1 needed for focus indicators). Deep Blue is 4.1:1.
+- `--eq-focus-ring` is now `0 0 0 2px #2986B4` (was a 40% Sky glow). Every component using it gets a solid Deep Blue ring.
+
 ## [1.5.0] — 2026-11-18
 
 Four supporting pastel colours. Additive only: nothing existing changes.
