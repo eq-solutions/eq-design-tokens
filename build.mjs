@@ -258,7 +258,7 @@ function buildCss() {
   out.push(' * GLOBAL ACCESSIBILITY & MOTION — suite-wide, from the foundation.');
   out.push(' * ========================================================================== */');
   out.push(':where(a, button, input, select, textarea, [tabindex], [role="button"], [role="tab"]):focus-visible {');
-  out.push('  outline: 2px solid var(--eq-sky);');
+  out.push('  outline: 2px solid var(--eq-deep);');
   out.push('  outline-offset: var(--eq-focus-offset, 2px);');
   out.push('  border-radius: var(--eq-radius-chip, 4px);');
   out.push('}');

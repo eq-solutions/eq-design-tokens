@@ -1,8 +1,8 @@
 {
   "focus": {
     "ring": {
-      "value": "0 0 0 2px rgba(61, 168, 216, 0.40)",
-      "comment": "required on every focusable input. Pair with outline-offset: 2px on focus-visible."
+      "value": "0 0 0 2px #2986B4",
+      "comment": "required on every focusable input: solid 2px Deep Blue (4.1:1 on white; the old 40% Sky glow was too faint). Pair with outline-offset: 2px on focus-visible."
     },
     "offset": { "value": "2px" }
   }
