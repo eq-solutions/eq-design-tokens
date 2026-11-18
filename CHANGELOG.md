@@ -2,6 +2,14 @@
 
 All notable changes to `@eq-solutions/tokens` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [SemVer](https://semver.org/).
 
+## [1.5.0] — 2026-11-18
+
+Four supporting pastel colours. Additive only: nothing existing changes.
+
+### Added
+
+- `color.pastel` group: `--eq-pastel-teal` `#7DCFD9`, `--eq-pastel-peach` `#FDE3D0`, `--eq-pastel-blush` `#F4C2C2`, `--eq-pastel-lavender` `#E4E0F7` (plus Tailwind `eq-pastel-*`, `tokens.ts` `color.pastel.*`, Dart `pastelTeal` etc.). Ink text only; never buttons, nav, large solid fills or status. Rules: `eq-context` Design Brief v1.5 draft.
+
 ## [1.4.0] — 2026-10-20
 
 Tokens for the open brand decisions applied in `@eq-solutions/ui` 1.18.0. Visible to every consumer: read **Changed** first.
